@@ -1,0 +1,50 @@
+<%- include('layout', { theme: theme, title: title, content: "<h1>Authorization</h1>" }) %>
+
+<% if (error && error.length > 0) { %>
+    <div style="color: red;">
+        <% error.forEach(err => { %>
+            <p><%= err %></p>
+        <% }) %>
+    </div>
+<% } %>
+
+<% if (user) { %>
+    <h2>Welcome, <%= user.name %>!</h2>
+    <p>Email: <%= user.email %></p>
+    <form action="/auth/logout" method="GET">
+        <button type="submit">Logout</button>
+    </form>
+<% } else { %>
+    <h2>Register</h2>
+    <form action="/auth/register" method="POST">
+        <label for="register-name">Full Name:</label>
+        <input type="text" name="name" id="register-name" required>
+
+        <label for="register-email">Email:</label>
+        <input type="email" name="email" id="register-email" required>
+
+        <label for="register-age">Age:</label>
+        <input type="number" name="age" id="register-age" min="1" required>
+
+        <label for="register-password">Password:</label>
+        <input type="password" name="password" id="register-password" required>
+
+        <label for="register-password-confirm">Confirm Password:</label>
+        <input type="password" name="passwordConfirm" id="register-password-confirm" required>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <hr>
+
+    <h2>Login</h2>
+    <form action="/auth/login" method="POST">
+        <label for="login-email">Email:</label>
+        <input type="email" name="email" id="login-email" required>
+
+        <label for="login-password">Password:</label>
+        <input type="password" name="password" id="login-password" required>
+
+        <button type="submit">Login</button>
+    </form>
+<% } %>
