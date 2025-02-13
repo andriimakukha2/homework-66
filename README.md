@@ -32,7 +32,7 @@ npm install
 3️⃣ Налаштування змінних середовища
 
 Створіть файл .env у кореневій директорії та додайте:
-```bash
+env
 SESSION_SECRET=your-session-secret
 MONGO_URI=your-mongodb-uri
 PORT=3001
